@@ -1,4 +1,8 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Typewriter from "typewriter-effect";
+
 import "./Form.css";
 
 function Form() {
@@ -10,7 +14,11 @@ function Form() {
 
   const [profession, setProfession] = useState( sessionStorage.getItem("profession") ? sessionStorage.getItem("profession") : 'Manufacturing' );
 
-  const [mongodbInsertedID,setMongodbInsertedID]=useState(sessionStorage.getItem("mongodb_insertedId") ? sessionStorage.getItem("mongodb_insertedId") : '')
+  const [mongodbInsertedID,setMongodbInsertedID]=useState(sessionStorage.getItem("mongodb_insertedId") ? sessionStorage.getItem("mongodb_insertedId") : '');
+
+
+  const notify = () => toast(mongodbInsertedID ? "Successfully updated user" : "Successfully saved user");
+
 
   useEffect(()=>{
 
@@ -43,15 +51,18 @@ function Form() {
     }
   },[])
 
+  // All Sectors fetching from database:::;
   useEffect(()=>{
-    fetch("http://localhost:5000/userSector")
+    fetch("https://hk-pro-server-production.up.railway.app/userSector")
     .then(res=>res.json())
     .then(data=>setAllSectors(data))
   },[])
 
+
+
 // Updating user function::::::::::
 function UpdateUser(mongodbInsertedID,submittedData){
-  fetch(`http://localhost:5000/users/${mongodbInsertedID}`,{
+  fetch(`https://hk-pro-server-production.up.railway.app/users/${mongodbInsertedID}`,{
     method:"PUT",
     headers: {
       'content-type': 'application/json'
@@ -72,7 +83,7 @@ function UpdateUser(mongodbInsertedID,submittedData){
 
 // Insert User Data Function::::::
 function insertUserData(submittedData){
-  fetch('http://localhost:5000/users',{
+  fetch('https://hk-pro-server-production.up.railway.app/users',{
         method:'POST',
         headers:{
           'content-type':'application/json'
@@ -83,7 +94,7 @@ function insertUserData(submittedData){
         .then(dataConfirmation=>{
          
           if(dataConfirmation.acknowledged){
-          alert("your data is submitted!!")
+          notify();
            
           // Save form data to session storage
         sessionStorage.setItem("mongodb_insertedId",(dataConfirmation.insertedId));
@@ -91,6 +102,8 @@ function insertUserData(submittedData){
           }
         })
 }
+
+
 
 
 
@@ -124,7 +137,19 @@ function insertUserData(submittedData){
   return (
     <div className='py-20'>
       
-      <p className='text-white text-lg md:text-2xl text-center'>Please enter your name and pick the Sectors you are currently involved in.</p>
+      <h1 className="font-bold text-center text-white text-2xl md:text-4xl  mb-7 ">
+          <Typewriter
+            options={{
+              strings: ["Welcome to HK Pro!"],
+              autoStart: true,
+              loop: true,
+            }}
+          />
+        </h1>
+
+      <p className='text-white text-2xl md:text-3xl text-center standard_font '>Please enter your name and pick the Sectors you are currently involved in.</p>
+
+      <ToastContainer/>
 
 <form type="form" onSubmit={handleSubmit} className='max-w-xl mx-auto 
     p-4  sm:p-8 md:p-12 lg:p-16 border-4 border-white rounded-3xl shadow-md bg-gray-900 mt-6 '>

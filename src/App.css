@@ -1,38 +1,23 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
+.standard_font{
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.gradient-background {
+  background: linear-gradient(300deg,darkviolet,blue,#e30c0c,#e30ccd);
+  background-size: 240% 240%;
+  animation: gradient-animation 6s ease infinite;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  50% {
+    background-position: 100% 50%;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    background-position: 0% 50%;
   }
 }
