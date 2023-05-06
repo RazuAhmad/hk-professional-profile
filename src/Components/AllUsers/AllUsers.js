@@ -3,11 +3,13 @@ import "./AllUsers.css";
 
 function AllUsers() {
     const [allUserProfile,setAllUserProfile]=useState([]);
-    useEffect(()=>{
-        fetch("https://hk-pro-server-production.up.railway.app/userSector")
+   
+
+      useEffect(()=>{
+        fetch("https://hk-pro-server-production.up.railway.app/Users")
         .then(res=>res.json())
         .then(data=>setAllUserProfile(data))
-      },[]);
+      })
       
   return (
     <>

@@ -76,6 +76,9 @@ function UpdateUser(mongodbInsertedID,submittedData){
      alert("You have updated data")
       
     }
+    else{
+      alert("Updated")
+    }
     
   })
 
