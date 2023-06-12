@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import "./AllUsers.css";
 
 function AllUsers() {
@@ -6,11 +6,10 @@ function AllUsers() {
    
 
       useEffect(()=>{
-        fetch("https://hk-pro-server-production.up.railway.app/Users")
+        fetch("https://hk-pro-server-production-e67a.up.railway.app/Users")
         .then(res=>res.json())
         .then(data=>setAllUserProfile(data))
       })
-      
   return (
     <>
     <p className='font-bold text-center text-white text-3xl mx-5 mb-7'>Total Number of Users: {allUserProfile.length}</p>

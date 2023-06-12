@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Typewriter from "typewriter-effect";
@@ -53,7 +53,7 @@ function Form() {
 
   // All Sectors fetching from database:::;
   useEffect(()=>{
-    fetch("https://hk-pro-server-production.up.railway.app/userSector")
+    fetch("https://hk-pro-server-production-e67a.up.railway.app/userSector")
     .then(res=>res.json())
     .then(data=>setAllSectors(data))
   },[])
@@ -62,7 +62,7 @@ function Form() {
 
 // Updating user function::::::::::
 function UpdateUser(mongodbInsertedID,submittedData){
-  fetch(`https://hk-pro-server-production.up.railway.app/users/${mongodbInsertedID}`,{
+  fetch(`https://hk-pro-server-production-e67a.up.railway.app/users/${mongodbInsertedID}`,{
     method:"PUT",
     headers: {
       'content-type': 'application/json'
@@ -86,7 +86,7 @@ function UpdateUser(mongodbInsertedID,submittedData){
 
 // Insert User Data Function::::::
 function insertUserData(submittedData){
-  fetch('https://hk-pro-server-production.up.railway.app/users',{
+  fetch('https://hk-pro-server-production-e67a.up.railway.app/users',{
         method:'POST',
         headers:{
           'content-type':'application/json'
