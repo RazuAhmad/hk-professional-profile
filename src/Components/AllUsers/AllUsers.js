@@ -20,7 +20,8 @@ function AllUsers() {
             allUserProfile.map(pd=><div className='border border-white mx-auto rounded-lg px-5 py-14 md:px-10 md:py-16 h-65 w-full md:w-20% mb-7 bg-orange-500 text-center text-white text-lg shadow-lg' key={pd._id}> 
 
                 <p > <span className='font-extrabold'>User name:</span>  {pd.name}</p>
-                <p><span className='font-extrabold'>Sector:</span> {pd?.sector}</p>
+                <p><span className='font-extrabold'>Sector:</span> {pd
+?.profession}</p>
 
                 
             </div>)
